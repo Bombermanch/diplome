@@ -590,6 +590,25 @@ textarea:focus {
 .sale .eTimer {
   text-align: center;
 }
+.eTimer span{
+  font-size: 40px;
+  display: inline-block;
+  
+  
+}
+.timer{
+  border: #000 solid 1px;
+  border-radius: 10px;
+  background: #fff;
+}
+.days, .hours, .minutes, .seconds{
+  background: #7c7575;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  
+}
 /*Contacts*/
 .contacts {
   padding: 6rem 0;
