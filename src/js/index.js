@@ -91,16 +91,16 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
     }    
     timer();
 
-    function tabs(){
-        let tab = document.querySelectorAll('.info-header-tab'),
-        info = document.querySelector('.glazing_slider'),
-        tabContent = document.querySelectorAll('.info-tabcontent');
+    function tabs(tabItemClass, tabItemBlockClass, contentClass, tabItemClassActive ){
+        let tab = document.querySelectorAll(`.${tabItemClass}`),
+        info = document.querySelector(`.${tabItemBlockClass}`),
+        tabContent = document.querySelectorAll(`.${contentClass}`);
         
         function hideTabContent(a){
             for (let i = a; i < tabContent.length; i++){
                 tabContent[i].classList.remove('show');
                 tabContent[i].classList.add('hide'); 
-                tab[i].classList.remove('active');           
+                tab[i].classList.remove(tabItemClassActive);           
             }
         }
         hideTabContent(1);
@@ -112,13 +112,13 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
                 tabContent[b].classList.remove('hide');
                 tabContent[b].classList.add('show');
                 
-                tab[b].classList.add('active');
+                tab[b].classList.add(tabItemClassActive);
             }
         }
 
-        info.addEventListener('click', (e) => { // ES6
+        info.addEventListener('click', (e) => {
             let target = e.target;        
-            if (target && target.classList.contains('info-header-tab')){
+            if (target && target.classList.contains(tabItemClass)){
                 for (let i = 0; i < tab.length; i++){
                     if (target == tab[i]){
                         hideTabContent(0);
@@ -129,7 +129,8 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
             }
         });
     }
-    tabs();
+    tabs('info-header-tab', 'glazing_slider', 'info-tabcontent', 'active');
+    tabs('decoration_item_link', 'decoration_slider', 'info-tabcontent_decoration', 'after_click');
     
         
 });
