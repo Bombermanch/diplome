@@ -4,18 +4,26 @@
 window.addEventListener('DOMContentLoaded', () => { // ES6
     'use strict';
     
-    function modal (){
+    function modal (windowClass, btnCallWindow){
         
-        let modalWindow = document.querySelector('.popup_engineer'),            
+        let modalWindow = document.querySelector(`.${windowClass}`),            
             popupClose = document.querySelectorAll('.popup_close'),
-            btn = document.querySelector('.header_btn');    
-        btn.addEventListener('click', () => { // ES6
-            
+            btn = document.querySelectorAll(`.${btnCallWindow}`); 
+        function showWindow(windowClass, btnCallWindow){
             modalWindow.style.display = 'block';
-            document.body.style.overflow = 'hidden';          
-            
-        });
+            document.body.style.overflow = 'hidden';
+        }
+        for(let i = 0; i < btn.length; i++){
+            btn[i].addEventListener('click', (e) => { // ES6
+                e.preventDefault();
+                showWindow(windowClass, btnCallWindow);         
+                
+            });
+        }
+          
+        
         window.addEventListener('click', (e) =>{
+            
             if (e.target == modalWindow){
                           
                 modalWindow.style.display = 'none';
@@ -32,7 +40,15 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
         }
         
     }
-    modal();
+    modal('popup_engineer','header_btn');
+    modal('popup','phone_link');
+    setTimeout(function(){
+        let modalWindow = document.querySelector('.popup');
+        modalWindow.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }, 60000); 
+    
+    
     function timer(){
         "use strict";    
         function getNormalisedDatetime(dString) { // yyyy-mm-dd hh:mm:ss
