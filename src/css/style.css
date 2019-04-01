@@ -898,6 +898,10 @@ textarea:focus {
   margin-top: 1rem;
   padding: 1rem 5rem;
 }
+.choose{
+  zoom: 1.5;
+  
+}
 /*Media*/
 @media (max-width: 1400px) {
   .main {
