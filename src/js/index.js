@@ -344,7 +344,7 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
             data.phone =  userPhone.value;
             e.preventDefault();           
             popupCalcEnd.style.display = 'none'; 
-            console.log(data);
+            
 
             
         });
@@ -368,7 +368,7 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
         failure: 'Что-то пошло не так...'
     };
     
-    let form = document.querySelectorAll('.main_form'),        
+    let form = document.querySelectorAll('.form'),        
         input = document.getElementsByTagName('input'),        
         statusMessage = document.createElement('div');
         statusMessage.classList.add('status');
