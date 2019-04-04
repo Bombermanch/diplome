@@ -8,12 +8,7 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
         
         let modalWindow = document.querySelector(`.${windowClass}`),            
             popupClose = document.querySelectorAll(`.${closeBtn}`),
-            btn = document.querySelectorAll(`.${btnCallWindow}`); 
-        
-            
-        
-        
-        
+            btn = document.querySelectorAll(`.${btnCallWindow}`);        
         for(let i = 0; i < btn.length; i++){
             btn[i].addEventListener('click', (e) => { // ES6
                 e.preventDefault();
@@ -151,7 +146,11 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
             for (let i = a; i < tabContent.length; i++){
                 tabContent[i].classList.remove('show');
                 tabContent[i].classList.add('hide'); 
-                tab[i].classList.remove(tabItemClassActive);           
+                tab[i].classList.remove(tabItemClassActive);
+                for (let j = 0; j < tab[i].children.length; j++){
+                    tab[i].children[j].classList.remove(tabItemClassActive); 
+                }
+                         
             }
         }
         
@@ -163,17 +162,23 @@ window.addEventListener('DOMContentLoaded', () => { // ES6
             if (tabContent[b].classList.contains('hide')){
                 tabContent[b].classList.remove('hide');
                 tabContent[b].classList.add('show');
+
                 
                 tab[b].classList.add(tabItemClassActive);
+                for (let i = 0; i < tab[b].children.length; i++){
+                    tab[b].children[i].classList.add(tabItemClassActive); 
+                }
+                
+                
             }
         }
-
+        
         info.addEventListener('click', (e) => {
             e.preventDefault();
             let target = e.target;        
-            if (target && target.classList.contains(tabItemClass)){
+            if ((target.parentNode && target.parentNode.classList.contains(tabItemClass))|| target && target.classList.contains(tabItemClass)){
                 for (let i = 0; i < tab.length; i++){
-                    if (target == tab[i]){
+                    if (target.parentNode == tab[i] || target == tab[i]){
                         hideTabContent(0);
                         showTabContent(i);
                         break;
